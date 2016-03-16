@@ -3,9 +3,9 @@ ruby '2.2.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-
+gem 'clearance'
 gem 'sqlite3', group: :development
-gem 'pg', group: :development 
+gem 'pg', group: :development
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
