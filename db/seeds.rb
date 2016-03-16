@@ -28,12 +28,12 @@ instructor_hash.each do
   Instructor.create(id_num: id, first_name: first, middle_name: middle, last_name: last, email: email)
 end
 
-#course_file = File.read('course.json')
-#course_hash = JSON.parse(course_file)
-#course_hash.each do
-#  |hash|
-#  name=hash["name"]
-#  code=hash["code"]
-#  description=hash["description"]
-#  Course.create(name: name, code: code, description: description)
-#end
+course_file = File.read('course.json')
+course_hash = JSON.parse(course_file)
+course_hash.each do
+  |hash|
+  name=hash["name"]
+  code=hash["code"]
+  description=hash["description"]
+  Course.create(name: name, code: code, description: description)
+end
