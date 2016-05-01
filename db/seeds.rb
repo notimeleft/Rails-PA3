@@ -11,9 +11,10 @@ subject_file = File.read('subject.json')
 subject_hash = JSON.parse(subject_file)
 
 subject_hash.each do
-  |hash|
-  array= hash["segments"]
-  array.each {|x| Subject.create(name: x["name"])}
+  |x|
+  sub_name = x["name"]
+  value= x["id"]
+  Subject.create(subject_id:value, name: sub_name)
 end
 
 instructor_file = File.read('instructor.json')
@@ -25,7 +26,7 @@ instructor_hash.each do
   middle=hash["middle"]
   id=hash["id"]
   email=hash["email"]
-  Instructor.create(id_num: id, first_name: first, middle_name: middle, last_name: last, email: email)
+  Instructor.create(first_name: first, last_name: last, email: email)
 end
 
 course_file = File.read('course.json')
@@ -33,7 +34,9 @@ course_hash = JSON.parse(course_file)
 course_hash.each do
   |hash|
   name=hash["name"]
-  code=hash["code"]
   description=hash["description"]
-  Course.create(name: name, code: code, description: description)
+
+  v = hash["subjects"]
+  id_value= v[0]["id"]
+  Course.create(name: name, code: id_value, description: description)
 end

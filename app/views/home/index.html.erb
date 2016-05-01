@@ -1,7 +1,27 @@
-<h1>Home Page</h1>
+<h1>
+  Welcome,
+<%=@current_user%>.
+  <br>
+</h1>
+<p>
+  You are enrolled in these courses:
+<% @res.each do |enrollment| %>
+      <br>
+      <tr>
+          <td><%= enrollment.course_name %></td> under <td><%= enrollment.subject %></td>
+      </tr>
+      <br>
+<% end %>
+
+</p>
+
 
 
 
 <%=link_to 'subjects', subjects_path%>
+<br>
 <%=link_to 'instructors', instructors_path%>
+<br>
 <%=link_to 'courses', courses_path%>
+<br>
+<%=link_to 'search', search_search_path%>

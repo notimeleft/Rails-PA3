@@ -1,0 +1,30 @@
+<h1>search for a course</h1>
+
+<form name="query" action="/search/search">
+	Subjects:
+	<select name="subject">
+		<option value="<%=options_for_select(@notes)%>"></option>
+	</select><br><br>
+
+  Courses:
+  <input type="text" name="course"><br><br>
+
+  <input type="submit" value="Search">
+</form>
+<br><br>
+
+<p>
+  <% @display_res.each do |course| %>
+        <tr>
+          <form name="query" action="/search/enroll">
+            <td><%= course.name %></td>
+            <input type = "hidden" name = "course" value = <%=course.id%>>
+            <input type="submit" value="enroll">
+          </form>
+        </tr>
+  <% end %>
+
+<%=@nothing%>
+</p>
+
+<%=link_to 'go back home', root_path%>

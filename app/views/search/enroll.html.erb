@@ -1,0 +1,8 @@
+<h1>
+  Hi <%=@current_user%>,
+</h1>
+
+<p>
+  you are enrolled in <%= @result.name%> under subject <%=@subj.name%>
+</p>
+<%=link_to 'go back home', root_path%>

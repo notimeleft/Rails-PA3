@@ -12,20 +12,17 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :subject_id %><br>
+    <%= f.text_field :subject_id %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :term %><br>
-    <%= f.text_field :term %>
-  </div>
-  <div class="field">
-    <%= f.label :abbreviation %><br>
-    <%= f.text_field :abbreviation %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 
-  
+
 <% end %>
