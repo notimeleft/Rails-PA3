@@ -11,20 +11,30 @@ class SearchController < ApplicationController
       @notes[name] = subject_id
     end
 
-    if !params[:subject] && !params[:course]
-      @display_res = []
-    elsif params[:subject] != '<option value=' && params[:course].size==0
-      @display_res =Course.where('code =?',params[:subject])
-    elsif params[:subject] != '<option value=' && params[:course].size>0
-      @display_res = Course.where("code =? AND name LIKE ?", params[:subject], "%#{params[:course]}%")
-    elsif params[:subject] == '<option value=' && params[:course].size>0
-      @display_res = Course.where('name LIKE ?',"%#{params[:course]}%")
-    else
-      @display_res = []
-      @nothing = "no results!"
-    end
+
 
     end
+    def partial_render
+
+      if !params[:subject] && !params[:course]
+        @display_res = []
+      elsif params[:subject] != '<option value=' && params[:course].size==0
+        @display_res =Course.where('code =?',params[:subject])
+      elsif params[:subject] != '<option value=' && params[:course].size>0
+        @display_res = Course.where("code =? AND name LIKE ?", params[:subject], "%#{params[:course]}%")
+      elsif params[:subject] == '<option value=' && params[:course].size>0
+        @display_res = Course.where('name LIKE ?',"%#{params[:course]}%")
+      else
+        @display_res = []
+        @nothing = "no results!"
+      end
+      respond_to do |format|
+        format.js
+      end
+
+    end
+
+
 
     def enroll
       @current_user = current_user.email

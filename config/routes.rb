@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'search/search'
   get 'search/enroll'
+  post 'search/enroll'
+  get 'search/partial_render'
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"

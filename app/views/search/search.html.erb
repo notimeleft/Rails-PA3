@@ -1,30 +1,36 @@
 <h1>search for a course</h1>
+<head>
+	<script type="text/javascript">
+	function inputchange() {
+	  $("#search_form").submit();
+	}
+	</script>
+</head>
 
-<form name="query" action="/search/search">
+<body>
+<%= form_tag("../search/partial_render", method: "get", remote: true, id: "search_form") do %>
+
+
 	Subjects:
-	<select name="subject">
+
+	<select name="subject" onchange="inputchange()">
 		<option value="<%=options_for_select(@notes)%>"></option>
-	</select><br><br>
+	</select>
 
   Courses:
-  <input type="text" name="course"><br><br>
 
-  <input type="submit" value="Search">
-</form>
+	<input type="text" oninput = "inputchange()" name="course">
+
+
+<%end%>
 <br><br>
 
 <p>
-  <% @display_res.each do |course| %>
-        <tr>
-          <form name="query" action="/search/enroll">
-            <td><%= course.name %></td>
-            <input type = "hidden" name = "course" value = <%=course.id%>>
-            <input type="submit" value="enroll">
-          </form>
-        </tr>
-  <% end %>
+  <div id = "results">
+<%= render "partial_search"%>
+  </div>
 
-<%=@nothing%>
 </p>
 
 <%=link_to 'go back home', root_path%>
+</body>

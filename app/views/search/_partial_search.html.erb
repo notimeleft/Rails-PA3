@@ -1,0 +1,15 @@
+<%if @display_res%>
+
+<% @display_res.each do |course| %>
+      <tr>
+
+          <td><%= course.name %></td>
+          <td>
+            
+            <%= button_to "Enroll", controller: "search", action: "enroll",  :course => course.id  %>
+          </td>
+
+      </tr>
+<% end %>
+<%=@nothing%>
+<%end%>
